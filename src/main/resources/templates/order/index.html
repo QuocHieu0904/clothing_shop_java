@@ -107,11 +107,11 @@
         },
         handleSubmit: function () {
            const commandForm = document.getElementById('commandForm');
-            if (!this.selectedShipServiceId) {
-                $store.toast.add('error', 'Lỗi', 'Vui lòng chọn dịch vụ vận chuyển');
-                return false;
-            }
-            commandForm.shipServiceId.value = this.selectedShipServiceId;
+<!--            if (!this.selectedShipServiceId) {-->
+<!--                $store.toast.add('error', 'Lỗi', 'Vui lòng chọn dịch vụ vận chuyển');-->
+<!--                return false;-->
+<!--            }-->
+            commandForm.shipServiceId.value = 1;
 
             const checkedPayment = document.querySelector('input[name=payment-method]:checked');
             if (!checkedPayment) {

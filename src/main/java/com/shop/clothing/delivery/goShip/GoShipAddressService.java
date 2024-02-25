@@ -23,23 +23,23 @@ public class GoShipAddressService implements IAddressService {
         var accessToken = goShipProperties.getAccessToken();
         headers.set("Authorization", "Bearer " + accessToken);
         headers.set("Content-Type", "application/json");
-        HttpEntity<String> entity = new HttpEntity<>(headers);
-        ResponseEntity<String> response = restTemplate.exchange(
-                goShipProperties.getEndpoint() + "/cities",
-                HttpMethod.GET,
-                entity,
-                String.class
-        );
-        JSONObject obj = new JSONObject(response.getBody());
-        JSONArray data = obj.getJSONArray("data");
-        for (int i = 0; i < data.length(); i++) {
-            JSONObject province = data.getJSONObject(i);
-            var fromDataLowerCase = province.getString("name").toLowerCase();
-            var provinceNameLowerCase = provinceName.toLowerCase();
-            if (fromDataLowerCase.endsWith(provinceNameLowerCase) || provinceNameLowerCase.endsWith(fromDataLowerCase)) {
-                return province.getInt("id");
-            }
-        }
+//        HttpEntity<String> entity = new HttpEntity<>(headers);
+//        ResponseEntity<String> response = restTemplate.exchange(
+//                goShipProperties.getEndpoint() + "/cities",
+//                HttpMethod.GET,
+//                entity,
+//                String.class
+//        );
+//        JSONObject obj = new JSONObject(response.getBody());
+//        JSONArray data = obj.getJSONArray("data");
+//        for (int i = 0; i < data.length(); i++) {
+//            JSONObject province = data.getJSONObject(i);
+//            var fromDataLowerCase = province.getString("name").toLowerCase();
+//            var provinceNameLowerCase = provinceName.toLowerCase();
+//            if (fromDataLowerCase.endsWith(provinceNameLowerCase) || provinceNameLowerCase.endsWith(fromDataLowerCase)) {
+//                return province.getInt("id");
+//            }
+//        }
         return 0;
     }
 

@@ -87,11 +87,11 @@ public class CreateOrderCommandHandler implements IRequestHandler<CreateOrderCom
                 .toCity(address.city)
                 .toDistrict(address.district)
                 .build());
-        var chooseShipService = validShipService.stream().filter(shipService -> shipService.getId().trim().equalsIgnoreCase(createOrderCommand.getShipServiceId().trim())).findFirst();
-        if (chooseShipService.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Dịch vụ vận chuyển không hợp lệ");
-        }
-        fee = chooseShipService.get().getTotalFree();
+//        var chooseShipService = validShipService.stream().filter(shipService -> shipService.getId().trim().equalsIgnoreCase(createOrderCommand.getShipServiceId().trim())).findFirst();
+//        if (chooseShipService.isEmpty()) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Dịch vụ vận chuyển không hợp lệ");
+//        }
+        fee = 0;
         var createDeliveryOrder = CreateShipOrderRequest.builder()
                 .orderAmount(totalPrice)
                 .orderID(orderId)

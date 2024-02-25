@@ -31,67 +31,67 @@ public class GoShipService implements IDeliveryService {
 
     @Override
     public List<GetValidShipServiceResponse> getValidShipService(GetValidShipServiceRequest request) {
-        var fromCityId = addressService.findProvinceId(shopSetting.getShopCity());
-        var toCityId = addressService.findProvinceId(request.getToCity());
-        var fromDistrictId = addressService.findDistrictId(shopSetting.getShopDistrict(), fromCityId);
-        var toDistrictId = addressService.findDistrictId(request.getToDistrict(), toCityId);
-        var restTemplate = new RestTemplate();
-        var accessToken = goShipProperties.getAccessToken();
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "Bearer " + accessToken);
-        headers.set("Content-Type", "application/json");
-        JSONObject shipment = new JSONObject();
-        JSONObject addressFrom = new JSONObject();
-        addressFrom.put("city", fromCityId);
-        addressFrom.put("district", fromDistrictId);
-        JSONObject addressTo = new JSONObject();
-        addressTo.put("city", toCityId);
-        addressTo.put("district", toDistrictId);
-        JSONObject parcel = new JSONObject();
-        parcel.put("cod", request.getCod());
-        parcel.put("weight", request.getWeightInGram());
-        parcel.put("width", request.getWidthInCm());
-        parcel.put("height", request.getHeightInCm());
-        parcel.put("length", request.getLengthInCm());
-        parcel.put("amount", request.getOrderValue());
-        shipment.put("address_from", addressFrom);
-        shipment.put("address_to", addressTo);
-        shipment.put("parcel", parcel);
-        JSONObject body = new JSONObject();
-        body.put("shipment", shipment);
-        HttpEntity<String> entity = new HttpEntity<>(body.toString(), headers);
-        ResponseEntity<String> response = restTemplate.exchange(
-                goShipProperties.getEndpoint() + "/rates",
-                HttpMethod.POST,
-                entity,
-                String.class
-        );
-        JSONObject obj = new JSONObject(response.getBody());
-
-        List<GetValidShipServiceResponse> result = new ArrayList<>();
-        var data = obj.getJSONArray("data");
-        for (int i = 0; i < data.length(); i++) {
-            JSONObject service = data.getJSONObject(i);
-            var serviceId = service.getString("id");
-            var carrierName = service.getString("carrier_name");
-            var carrierLogo = service.getString("carrier_logo");
-            var serviceName = service.getString("service");
-            var expected = service.getString("expected");
-            var cod = service.getInt("cod_fee");
-            var totalFee = service.getInt("total_fee");
-            var totalAmount = service.getInt("total_amount");
-            var responseService = GetValidShipServiceResponse.builder()
-                    .id(serviceId)
-                    .carrierName(carrierName)
-                    .carrierLogo(carrierLogo)
-                    .service(serviceName)
-                    .expected(expected)
-                    .totalAmount(totalAmount)
-                    .totalFree(totalFee)
-                    .build();
-            result.add(responseService);
-        }
-        return result;
+//        var fromCityId = addressService.findProvinceId(shopSetting.getShopCity());
+//        var toCityId = addressService.findProvinceId(request.getToCity());
+//        var fromDistrictId = addressService.findDistrictId(shopSetting.getShopDistrict(), fromCityId);
+//        var toDistrictId = addressService.findDistrictId(request.getToDistrict(), toCityId);
+//        var restTemplate = new RestTemplate();
+//        var accessToken = goShipProperties.getAccessToken();
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.set("Authorization", "Bearer " + accessToken);
+//        headers.set("Content-Type", "application/json");
+//        JSONObject shipment = new JSONObject();
+//        JSONObject addressFrom = new JSONObject();
+//        addressFrom.put("city", fromCityId);
+//        addressFrom.put("district", fromDistrictId);
+//        JSONObject addressTo = new JSONObject();
+//        addressTo.put("city", toCityId);
+//        addressTo.put("district", toDistrictId);
+//        JSONObject parcel = new JSONObject();
+//        parcel.put("cod", request.getCod());
+//        parcel.put("weight", request.getWeightInGram());
+//        parcel.put("width", request.getWidthInCm());
+//        parcel.put("height", request.getHeightInCm());
+//        parcel.put("length", request.getLengthInCm());
+//        parcel.put("amount", request.getOrderValue());
+//        shipment.put("address_from", addressFrom);
+//        shipment.put("address_to", addressTo);
+//        shipment.put("parcel", parcel);
+//        JSONObject body = new JSONObject();
+//        body.put("shipment", shipment);
+//        HttpEntity<String> entity = new HttpEntity<>(body.toString(), headers);
+//        ResponseEntity<String> response = restTemplate.exchange(
+//                goShipProperties.getEndpoint() + "/rates",
+//                HttpMethod.POST,
+//                entity,
+//                String.class
+//        );
+//        JSONObject obj = new JSONObject(response.getBody());
+//
+//        List<GetValidShipServiceResponse> result = new ArrayList<>();
+//        var data = obj.getJSONArray("data");
+//        for (int i = 0; i < data.length(); i++) {
+//            JSONObject service = data.getJSONObject(i);
+//            var serviceId = service.getString("id");
+//            var carrierName = service.getString("carrier_name");
+//            var carrierLogo = service.getString("carrier_logo");
+//            var serviceName = service.getString("service");
+//            var expected = service.getString("expected");
+//            var cod = service.getInt("cod_fee");
+//            var totalFee = service.getInt("total_fee");
+//            var totalAmount = service.getInt("total_amount");
+//            var responseService = GetValidShipServiceResponse.builder()
+//                    .id(serviceId)
+//                    .carrierName(carrierName)
+//                    .carrierLogo(carrierLogo)
+//                    .service(serviceName)
+//                    .expected(expected)
+//                    .totalAmount(totalAmount)
+//                    .totalFree(totalFee)
+//                    .build();
+//            result.add(responseService);
+//        }
+        return null;
     }
 
     @Override
