@@ -39,13 +39,14 @@
                     return this.totalAmount() - this.reduceAmount();
                 },
                 onDelete: async function (id) {
-                    try {
-                        const result = await window.apiClient.removeItemFromCart(id);
-                        this.cartItems = this.cartItems.filter((item) => item.productOptionId !== id);
-                        Alpine.store('toast').add('success', 'Thành công', 'Xóa sản phẩm khỏi giỏ hàng thành công');
-
-                    } catch (e) {
-                        Alpine.store('toast').add('error', 'Thất bại', e.response.error);
+                    if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng không?')) {
+                        try {
+                            const result = await window.apiClient.removeItemFromCart(id);
+                            this.cartItems = this.cartItems.filter((item) => item.productOptionId !== id);
+                            Alpine.store('toast').add('success', 'Thành công', 'Xóa sản phẩm khỏi giỏ hàng thành công');
+                        } catch (e) {
+                            Alpine.store('toast').add('error', 'Thất bại', e.response.error);
+                        }
                     }
                 },
                 onChangeQuantity: async function (id, quantity) {
