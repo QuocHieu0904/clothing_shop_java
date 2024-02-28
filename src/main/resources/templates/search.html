@@ -189,6 +189,9 @@
                 this.selectedColorIds.push(colorId);
             }
         },
+        isSelectedColor(colorId) {
+                return this.selectedColor === colorId;
+        },
         toggleSelectedSize(size) {
             if (this.selectedSize.includes(size)) {
                 this.selectedSize = this.selectedSize.filter(s => s !== size);
@@ -308,11 +311,19 @@
                                         class="bg-gray-100 text-gray-800 cursor-pointer text-xs font-medium  px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-400 border border-gray-500">
                                 </li>
                             </template>
+<!--                            <template x-for="color in getSelectedColors()" :key="color.colorId">-->
+<!--                                <li-->
+<!--                                        x-text="color.name"-->
+<!--                                        @click="toggleSelectedColor(color.colorId)"-->
+<!--                                        class="bg-gray-100 text-gray-800 cursor-pointer text-xs font-medium  px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-400 border border-gray-500">-->
+<!--                                </li>-->
+<!--                            </template>-->
                             <template x-for="color in getSelectedColors()" :key="color.colorId">
                                 <li
-                                        x-text="color.name"
                                         @click="toggleSelectedColor(color.colorId)"
-                                        class="bg-gray-100 text-gray-800 cursor-pointer text-xs font-medium  px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-400 border border-gray-500">
+                                        class="cursor-pointer text-xs font-medium px-2.5 py-0.5 rounded border border-gray-500"
+                                        :style="{ 'background-color':  color.image, 'width': '25px', 'height': '25px', 'border': '2px solid gray', 'border-radius': '50%' }"
+                                >
                                 </li>
                             </template>
                             <template x-for="size in getSelectedSizes()" :key="size">
@@ -523,8 +534,8 @@
                                 <template x-for="color in colors" :key="color.colorId">
                                     <li
                                             x-bind:value="color.colorId"
-                                            x-text="color.name"
                                             @click="toggleSelectedColor(color.colorId)"
+                                            :style="{ 'background-color': color.image, 'width': '25px', 'height': '25px', 'border': isSelectedColor(color.colorId) ? '7px solid black' : '2px solid gray', 'border-radius': '50%' }"
                                             class="bg-gray-600 rounded-full text-white flex items-center px-3 py-1 ml-2 mt-2 hover:bg-black">
                                     </li>
                                 </template>
@@ -830,7 +841,24 @@
     </div>
     <div class="mt-6"></div>
     <!--    <script src="/js/search.js"></script>-->
-
+    <script>
+        function app() {
+            return {
+                colors: [
+                    { colorId: 1, image: 'red' },
+                    { colorId: 2, image: 'green' },
+                    { colorId: 3, image: 'blue' }
+                ],
+                selectedColor: null,
+                toggleSelectedColor(colorId) {
+                    this.selectedColor = colorId === this.selectedColor ? null : colorId;
+                },
+                isSelectedColor(colorId) {
+                    return this.selectedColor === colorId;
+                }
+            };
+        }
+    </script>
 </div>
 </body>
 </html>
