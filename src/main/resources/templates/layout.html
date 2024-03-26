@@ -218,15 +218,7 @@
                     id="mobile-menu-2"
             >
                 <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                    <li>
-                        <a
-                                href="/home"
-                                class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
-                                aria-current="page"
-                        >
-                            Trang chủ
-                        </a>
-                    </li>
+
                     <li>
                         <a
                                 th:href="@{/product/search?sortField=product.discount&sortDir=desc}"
@@ -262,7 +254,7 @@
                         </button>
                         <div
                                 id="dropdownCategory"
-                                class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                                class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600" style="z-index: 100000;"
                         >
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-400"
                                 aria-labelledby="dropdownCategoryButton">

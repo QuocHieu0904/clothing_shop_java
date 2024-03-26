@@ -58,7 +58,7 @@
         <ol class="inline-flex items-center space-x-1 md:space-x-3">
             <li class="inline-flex items-center">
                 <a
-                        href="#"
+                        href="/home"
                         class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
                 >
                     <svg
@@ -76,30 +76,30 @@
                 </a>
             </li>
             <li>
-                <div class="flex items-center">
-                    <svg
-                            class="w-3 h-3 text-gray-400 mx-1"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 6 10"
-                    >
-                        <path
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="m1 9 4-4-4-4"
-                        />
-                    </svg>
-                    <a
-                            href="#"
-                            class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white"
-                            th:text="${product.getForGenderDisplay()}"
-                    >
-                    </a>
-                </div>
-            </li>
+<!--                <div class="flex items-center">-->
+<!--                    <svg-->
+<!--                            class="w-3 h-3 text-gray-400 mx-1"-->
+<!--                            aria-hidden="true"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            fill="none"-->
+<!--                            viewBox="0 0 6 10"-->
+<!--                    >-->
+<!--                        <path-->
+<!--                                stroke="currentColor"-->
+<!--                                stroke-linecap="round"-->
+<!--                                stroke-linejoin="round"-->
+<!--                                stroke-width="2"-->
+<!--                                d="m1 9 4-4-4-4"-->
+<!--                        />-->
+<!--                    </svg>-->
+<!--                    <a-->
+<!--                            href="#"-->
+<!--                            class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white"-->
+<!--                            th:text="${product.getForGenderDisplay()}"-->
+<!--                    >-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </li>-->
             <li>
                 <div class="flex items-center">
                     <svg
@@ -118,6 +118,7 @@
                         />
                     </svg>
                     <a
+                            th:href="@{/product/search?categoryIds={categoryId}(categoryId=${product.category.categoryId})}"
                             class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400"
                             th:text="${product.category.name}"
                     ></a>
@@ -360,7 +361,7 @@ imagesOfColor = [...validColors[0].images];
                 </div>
             </div>
             <div
-                    class="py-4 border-t mt-2 text-lg flex gap-x-6 items-center border-primary-200"
+                    class="py-4 border-t mt-2 text-lg flex gap-x-3 items-center border-primary-200"
                     x-data="{
             quantity : 1,
             increment(){

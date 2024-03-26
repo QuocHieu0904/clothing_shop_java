@@ -121,7 +121,7 @@ const getMainChartOptions = () => {
   };
 };
 
-const categories = ["Áo thun", "Áo sơ mi", "Quần jean", "Quần short", "Váy", "Đầm"];
+const categories = ["Áo thun", "Áo sơ mi", "Quần jean", "Quần short"];
 function generateData(timeGap = 7) {
   // last 7 days
   let data = [];

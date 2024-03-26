@@ -5165,9 +5165,6 @@ div[drawer-backdrop] {
   .lg\:border-0{
     border-width: 0px;
   }
-  .lg\:bg-transparent{
-    background-color: transparent;
-  }
   .lg\:p-0{
     padding: 0px;
   }
@@ -5210,10 +5207,6 @@ div[drawer-backdrop] {
   .lg\:text-9xl{
     font-size: 8rem;
     line-height: 1;
-  }
-  .lg\:text-primary-700{
-    --tw-text-opacity: 1;
-    color: rgb(51 65 85 / var(--tw-text-opacity));
   }
   .lg\:hover\:bg-transparent:hover{
     background-color: transparent;

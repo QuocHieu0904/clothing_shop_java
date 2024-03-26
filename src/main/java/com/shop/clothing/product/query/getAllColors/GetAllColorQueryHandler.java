@@ -19,7 +19,11 @@ public class GetAllColorQueryHandler  implements IRequestHandler<GetAllColorQuer
     @Override
     public HandleResponse<Collection<ColorDto>> handle(GetAllColorQuery getAllColorQuery) throws Exception {
         var colors = colorRepository.findAll();
-        var colorDtos = colors.stream().map(color -> modelMapper.map(color, ColorDto.class)).toList();
+//        var colorDtos = colors.stream().map(color -> modelMapper.map(color, ColorDto.class)).toList();
+        var colorDtos = colors.stream()
+                .map(color -> modelMapper.map(color, ColorDto.class))
+                .limit(5)// Giới hạn số lượng màu sắc
+                .toList();
         return HandleResponse.ok(colorDtos);
     }
 }
